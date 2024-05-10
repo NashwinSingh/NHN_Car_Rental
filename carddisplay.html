@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Form</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    height: 100%;
+    background-color: #222222;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 3% auto;
+}
+
+.ui {
+    border: 0;
+    box-shadow: 0 0 10px 0 rgba(149, 184, 209, .5);
+    border-radius: 10px;
+    width: 60%;
+    margin: 0 auto;
+    padding: 10%;
+    display: flex;
+    gap: 20px;
+    background-color: rgb(0, 0, 0);
+}
+
+.container-left {
+    width: 50%;
+}
+
+.container-right {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    width: 360px;
+    height: 230px;
+    margin: 0 auto;
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(0,140,177,1) 35%, rgba(0,29,125,1) 100%);
+    border: 1px solid rgba(0,0,0,.3);
+    border-radius: 15px;
+}
+
+.intern {
+    padding: 20px;
+}
+
+.approximation {
+    width: 30px;
+    transform: rotate(90deg);
+}
+
+.chip {
+    height: 40px;
+    position: relative;
+    left: 87%;
+    bottom: 20px;
+}
+
+.card-number {
+    margin-top: 40px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    display: flex;
+}
+
+.card-holder {
+    color: whitesmoke;
+}
+
+.card label {
+    font-size: .7rem;
+}
+
+.card-infos {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    color: white;
+}
+
+#credit-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+.number-container, .name-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.expiration-container, .cvv-container {
+    width: 50%;
+}
+
+input {
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #333333;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    outline: 0;
+    width: 90%;
+}
+
+input[type="text"]:focus {
+    border: 1px solid #95B8D1;
+}
+
+input#valid-thru-text, input#cvv-text {
+    width: 80%;
+}
+
+input[type="submit"] {
+    width: 95%;
+    background-color: #008cb1;
+    cursor: pointer;
+}
+.pay-button{
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #333333;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    outline: 0;
+    width: 90%;
+    width: 95%;
+    background-color: #008cb1;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: bisque;
+    transition: 2s;
+    animation: pulse 2s infinite;
+    animation-delay: 1s;
+}
+@keyframes pulse{
+    0%{
+        text-shadow:  0 1px 1px wheat;
+    }
+    45%{
+        text-shadow:  0 1px 3px wheat;
+    }
+    100%{
+        text-shadow: 0 1px 1px wheat;
+    }
+}
+
+
+.infos-container {
+    display: flex;
+}
+
+@media (max-width: 1024px) {
+    .ui {
+        flex-direction: column-reverse;
+    }
+
+    .container-left, .container-right {
+        width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <main class="container">
+        <section class="ui">
+            <div class="container-left">
+                <form id="credit-card">
+                    <div class="number-container">
+                        <label>Card Number</label>
+                        <input type="text" name="card-number" id="card-number" maxlength="19" placeholder="1234 5678 9101 1121"
+                        required
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    </div>
+                    <div class="name-container">
+                        <label>Holder</label>
+                        <input type="text" name="name-text" id="name-text" maxlength="30" placeholder=""
+                        required
+                        onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.key == ' '">
+                    </div>
+                    <div class="infos-container">
+                        <div class="expiration-container">
+                            <label>Valid-thru</label>
+                            <input type="text" name="valid-thru-text" id="valid-thru-text" maxlength="5" placeholder=""
+                            required
+                            
+                            onkeypress="return event.charCode >=48 && event.charCode <= 57">
+                        </div>
+                        <div class="cvv-container">
+                            <label>CVV</label>
+                            <input type="text" name="cvv-text" id="cvv-text" maxlength="3" placeholder=""
+                            required
+                            onkeypress="return event.charCode >=48 && event.charCode <= 57">
+                        </div>
+                    </div>
+                    <input type="submit" value="FINALIZE" id="add">
+                    <button style="display: none;" class="pay-button" id="bil" onclick="sendData()" >Confrim Payment</button>
+                </form>
+            </div>
+            <div class="container-right">
+                <div class="card">
+                    <div class="intern">
+                        <img class="approximation" src="img/wifi.jpeg" alt="approximation">
+                        <div class="card-number">
+                            <div class="number-vl"></div>
+                        </div>
+                        <div class="card-holder">
+                            <label>Holder</label>
+                            <div class="name-vl"></div>
+                        </div>
+                        <div class="card-infos">
+                            <div class="exp">
+                                <label>valid-thru</label>
+                                <div class="expiration-vl"></div>
+                            </div>
+                            <div class="cvv">
+                                <label>CVV</label>
+                                <div class="cvv-vl"></div>
+                            </div>
+                        </div>
+                        <img class="chip" src="img/sim.jpeg" alt="chip">
+                    </div>
+                </div>
+            </div>
+
+
+            
+                                
+            </div>
+
+        </section>
+    </main>
+            <div id="congrats" style="display: none;color: bisque;text-align: center;">
+
+                <h2>YOUR CAR WILL BE READY FOR PICK-UP ON THE
+                    <span id="pickup" ></span> AT <a href="" id="showlocmap"><span id="loc" title="click for location"></span></a> </h2>
+            
+                    <h5>RENTALS ENDS ON THE <span id="return"></span></h5>
+                    <p>Enjoy Your <span id="daysofriding"></span> Days Of Driving</p>
+
+            </div>
+    <script>
+        const form = document.querySelector("#credit-card");
+
+const cardNumber = document.querySelector("#card-number");
+const cardHolder = document.querySelector("#name-text");
+const cardExpiration = document.querySelector("#valid-thru-text");
+const cardCVV = document.querySelector("#cvv-text");
+
+const cardNumberText = document.querySelector(".number-vl");
+const cardHolderText = document.querySelector(".name-vl");
+const cardExpirationText = document.querySelector(".expiration-vl");
+const cardCVVText = document.querySelector(".cvv-vl");
+
+//congrats
+
+console.log(JSON.parse(window.localStorage.getItem('myObject')));
+        const myObject = JSON.parse(window.localStorage.getItem('myObject'));
+
+var dissapear = document.getElementById('add');
+
+var bill = document.getElementById('bil');
+
+var congratsMg = document.getElementById('congrats');
+
+var pickup = document.getElementById('pickup');
+var placelocation = document.getElementById('loc')
+var returnDate = document.getElementById('return')
+var ridingdays = document.getElementById('daysofriding')
+
+
+//end of congrats
+
+cardNumber.addEventListener("keyup", (e) => {
+    if (!e.target.value) {
+        cardNumberText.innerText = "1234 5678 9101 1121";
+    } else {
+        const valuesOfInput = e.target.value.replaceAll(" ", "");
+
+        if (e.target.value.length > 14) {
+            e.target.value = valuesOfInput.replace(/(\d{4})(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3 $4");
+            cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3 $4");
+        } else if (e.target.value.length > 9) {
+            e.target.value = valuesOfInput.replace(/(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3");
+            cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{4})(\d{0,4})/, "$1 $2 $3");
+        } else if (e.target.value.length > 4) {
+            e.target.value = valuesOfInput.replace(/(\d{4})(\d{0,4})/, "$1 $2");
+            cardNumberText.innerHTML = valuesOfInput.replace(/(\d{4})(\d{0,4})/, "$1 $2");
+        } else {
+            cardNumberText.innerHTML = valuesOfInput
+        }
+    }
+})
+
+cardHolder.addEventListener("keyup", (e) => {
+    if (!e.target.value) {
+        cardHolderText.innerHTML = "";
+    } else {
+        cardHolderText.innerHTML = e.target.value.toUpperCase();
+    }
+})
+
+cardExpiration.addEventListener("keyup", (e) => {
+    if (!e.target.value) {
+        cardExpirationText.innerHTML = "";
+    } else {
+        const valuesOfInput = e.target.value.replace("/", "");
+
+        if (e.target.value.length > 2) {
+            e.target.value = valuesOfInput.replace(/^(\d{2})(\d{0,2})/, "$1/$2");
+            cardExpirationText.innerHTML = valuesOfInput.replace(/^(\d{2})(\d{0,2})/, "$1/$2");
+        } else {
+            cardExpirationText.innerHTML = valuesOfInput;
+        }
+    }
+})
+
+cardCVV.addEventListener("keyup", (e) => {
+    if (!e.target.value) {
+        cardCVVText.innerHTML = "";
+    } else {
+        cardCVVText.innerHTML = e.target.value;
+    }
+})
+
+//map viewing
+
+//map location
+var showmap = document.getElementById('showlocmap');
+
+
+
+  
+
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    congratsMg.style.display = 'block';
+
+
+            dissapear.style.display = 'none'
+            bill.style.display = 'block';
+            
+
+            pickup.innerHTML = myObject.pick;
+            placelocation.innerHTML = myObject.place;
+            returnDate.innerHTML = myObject.re;
+            ridingdays.innerHTML = myObject.difoftime/ (1000 * 3600 * 24);
+
+
+switch (myObject.place) {
+  case 'OR Tambo International Airport':
+    showmap.href = 'https://www.google.com/maps/place/O.R.+Tambo+International+Airport/@-26.1371051,28.2416174,15z/data=!4m6!3m5!1s0x1e95143805a229c3:0xb3bf1c40792821d6!8m2!3d-26.1371051!4d28.2416174!16zL20vMHFuMnY?entry=ttu';
+
+    break;
+
+    case 'Cape Town International Airport':
+    showmap.href = 'https://www.google.com/maps/place/Cape+Town+International+Airport/@-33.9714585,18.5995102,17z/data=!3m1!4b1!4m20!1m13!4m12!1m4!2m2!1d30.9073034!2d-29.9002184!4e1!1m6!1m2!1s0x1dcc4542f7400bbd:0x40487579e3cf5e90!2scape+town+international+airport!2m2!1d18.6020851!2d-33.971463!3m5!1s0x1dcc4542f7400bbd:0x40487579e3cf5e90!8m2!3d-33.971463!4d18.6020851!16zL20vMDFuZm5f?entry=ttu';
+    
+    break;
+
+    case 'King Shaka International Airport':
+    showmap.href = 'https://www.google.com/maps/place/King+Shaka+International+Airport/@-29.6132116,31.0922737,13.61z/data=!4m14!1m7!3m6!1s0x1ef7105eabc626d5:0xe906bb08e0c13d33!2sKing+Shaka+International+Airport!8m2!3d-29.6099786!4d31.1168871!16s%2Fm%2F027cd1t!3m5!1s0x1ef7105eabc626d5:0xe906bb08e0c13d33!8m2!3d-29.6099786!4d31.1168871!16s%2Fm%2F027cd1t?entry=ttu';
+    
+    break;
+
+  default:
+    break;
+}
+
+})
+
+
+
+let fof = ''
+function sendData(){
+
+        fof=cardNumber.value;
+
+        window.localStorage.setItem('cardObject',JSON.stringify({numberoOncard:fof}))
+
+        window.location.href='final.htm'
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Rental Website</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+
+
+  <!--NAVBAR AND SIGN IN/SIGN UP-->
+
+  <header>
+    <a href="#" class="logo"><img src="img/nh-logo-letter-speed-meter-racing-style-initial-monogram-design-black-background-speedometer-238211125.webp" alt=""></a>
+
+    <div class="bx bx-menu" id="menu-icon"></div>
+
+    <ul class="navbar">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#ride">Ride</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <div class="header-btn">
+
+      <!--<a href="signin page.htm" class="sign-up" id="signup">Sign Up</a>-->
+      <a href="signin page.htm" class="sign-in" id="signin">Sign In</a>
+      <a href="signin page.htm">
+      <div class="sign-in" style="display: none; padding: 10px;" id="usernamelocation"></div>
+      </a>
+    </div>
+  </header>
+
+  <!--Home-->
+
+  <section class="home" id="home">
+    <div class="text">
+      <h1><span>Looking</span> to <br>rent a car</h1>
+      <p>Come to NHN Car Rentals and you shall find your dream rental.</p>
+      <div class="app-stores">
+        <a href="https://play.google.com/store/games?hl=en&gl=US">
+        <img src="img/512x512.png" alt="">
+        </a>
+        <a href="https://www.istore.co.za/">
+        <img src="img/ios.png" alt="">
+        </a>
+      </div>
+    </div>
+
+
+    <div class="form-container">
+      <form action="" class="form">
+        <div class="input-box">
+          <span>Location</span>
+          <!--
+          <input type="search" name="" id="" placeholder="Search Places">
+          -->
+          <select name="" id="loc">
+            <option value=""></option>
+            <option>OR Tambo International Airport</option>
+            <option>Cape Town International Airport</option>
+            <option>King Shaka International Airport</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <span>Pick-Up Date</span>
+          <input type="date" name="" id="Pick-Up-data">
+        </div>
+        <div class="input-box">
+          <span>Return date</span>
+          <input type="date" name="" id="Return-date">
+        </div>
+        <input type="submit" name="" id="" class="btn">
+
+        <div id="car-info" class="car-info"></div>
+
+      </form>
+    </div>
+  </section>
+
+
+  <!--How it works with the cars-->
+
+  <section class="ride" id="ride">
+    <div class="heading">
+      <span>How it works</span>
+      <h1>Rent With 3 Easy Steps</h1>
+    </div>
+    <div class="ride-container">
+      <div class="box">
+        <i class='bx bxs-map'></i>
+        <h2>Choose A Location</h2>
+        <p>Here at NHN Car Rental we have multiple locations amongst South Africa <br> only situated at our main Airports being Johannesburg, Cape Town, Durban.</p>
+      </div>
+
+      <div class="ride-container">
+        <div class="box">
+          <i class='bx bxs-calendar-check'></i>
+          <h2>Pick-Up Date</h2>
+          <p>All you need to do is a choose a date of when you would like to Pick up your vehicle and choose when you would like to return it whether it be for 2 days or 1 month we make sure that you as the customer gets the best experience always.</p>
+        </div>
+
+        <div class="ride-container">
+          <div class="box">
+            <i class='bx bxs-calendar-star'></i>
+            <h2>Book A Car</h2>
+            <p>Once you are done booking when to Pick up and return your beautiful vehicle you will then proceed to choose your specific vehicle as to your liking and hearts desires.</p>
+          </div>
+    </div>
+  </section>
+
+  <!---Cars services available--->
+
+  <section class="services" id="services">
+    <form action="" class="form">
+    <div class="heading">
+      <span>Best Services</span>
+      <h1>Explore Our Top Deals <br> From Top Rated Dealers</h1>
+    </div>
+    <div class="services-container">
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600.jpg" alt="">
+        </div>
+        <p>2018</p>
+        <h3>2018 BMW M3 F80</h3>
+        <h2>R899,000 | R12500<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600 (7).jpg" alt="">
+        </div>
+        <p>2021</p>
+        <h3>2021 BMW X5 M50d</h3>
+        <h2>R1,400,000 | R8000<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600 (5).jpg" alt="">
+        </div>
+        <p>2022</p>
+        <h3>2022 Toyota Hilux 2.8GD6 Double Cab Legend</h3>
+        <h2>R700,000 | R6500<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600 (4).jpg" alt="">
+        </div>
+        <p>2018</p>
+        <h3>2018 Audi Rs3 Sedan Quattro</h3>
+        <h2>R990,000 | R11750<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600 (3).jpg" alt="">
+        </div>
+        <p>1997</p>
+        <h3>1997 BMW M3 E36 Sedan</h3>
+        <h2>R1,099,000 | R9500<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600 (6).jpg" alt="">
+        </div>
+        <p>2015</p>
+        <h3>2015 Mercedes AMG C-Class C63</h3>
+        <h2>R1,100,000 | R12500<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600 (1).jpg" alt="">
+        </div>
+        <p>2023</p>
+        <h3>2023 Volkswagen Amarok 3.0TDI V6 Double Cab 4Motion</h3>
+        <h2>R1,450,000 | R7000<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600 (8).jpg" alt="">
+        </div>
+        <p>2020</p>
+        <h3>2020 Land Rover Defender 110 D240 S</h3>
+        <h2>R1,299,000 | R6250<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600 (9).jpg" alt="">
+        </div>
+        <p>2019</p>
+        <h3>2019 BMW M4 Coupe Competition</h3>
+        <h2>R1,099,000 | R11000<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600 (10).jpg" alt="">
+        </div>
+        <p>1990</p>
+        <h3>1990 BMW 3 Series 325is Evo 1</h3>
+        <h2>R1,399,000 | R8750<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600 (11).jpg" alt="">
+        </div>
+        <p>2019</p>
+        <h3>2019 Jaguar F-Type Coupe P380 R-Dynamic</h3>
+        <h2>R899,000 | R9500<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/Crop800x600 (12).jpg" alt="">
+        </div>
+        <p>2022</p>
+        <h3>2022 Audi A3 Sportback 35TFSI S Line</h3>
+        <h2>R569,000 | R6500<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/firstpichesent.jpeg" alt="">
+        </div>
+        <p>2019</p>
+        <h3>Toyota Fortuner 2.8GD-6 Auto</h3>
+        <h2>R899,000 | R6750<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/secondpichesent.jpeg" alt="">
+        </div>
+        <p>2019</p>
+        <h3>Mercedes-Benz V-Class V250d Avantgarde AMG Line </h3>
+        <h2>R1,499,000 | R7250<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="img/thirdpichesent.jpeg" alt="">
+        </div>
+        <p>2019</p>
+        <h3>BMW M5 Competition</h3>
+        <h2>R1,299,000 | R11500<span>/Day</span></h2>
+        <a href="#" class="btn" onclick="rentCar(this)">Rent Now</a>
+      </div>
+
+
+    </div>
+  </form>
+  </section>
+
+
+  <!---ABOUT-->
+
+  <section class="about" id="about">
+    <div class="heading">
+      <span>About Us</span>
+      <h1>Best customer experience</h1>
+    </div>
+    <div class="about-container">
+      <div class="about-img">
+        <img src="img/Lamborghini-Dubai-Showroom.jpg" alt="">
+      </div>
+      <div class="about-text">
+        <span>About Us</span>
+        <p>Here at NHN Car Rentals we will always and forever strive to give our best when it comes to our detailing work and customer services especially making sure our hospitality is well kept for anyone who walks through our doors comes and leaves with a smile.</p>
+        <p>We make sure that our cars are safe for the customer when ever being rented out as well make sure the customer finds no faults and will have a happy drive during their time with us at NHN Car Rentals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!---REVIEWS--->
+
+  <section class="reviews" id="reviews">
+    <div class="heading">
+      <span>Reviews</span>
+      <h1>What our customers say</h1>
+    </div>
+    <div class="reviews-container">
+      <div class="box">
+        <div class="rev-img">
+          <img src="img/rev1.jpg" alt="">
+        </div>
+        <h2>Brendin Van Wyk</h2>
+        <div class="stars">
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star' ></i>
+        </div>
+        <p>My dad hired their M3 and M4 for my Matric dance and those cars were sounding and looking beautiful I will always recommend them to anyone wanting to use it for a function or rental.</p>
+      </div>
+
+
+      <div class="box">
+        <div class="rev-img">
+          <img src="img/rev2.jpg" alt="">
+        </div>
+        <h2>Joshua Botha</h2>
+        <div class="stars">
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star-half' ></i>
+        </div>
+        <p>I hired a Toyota Hilux from them for the weekend and not once did I have to fill up because they gave me a bakkie with a full tank but the detailers I noticed did not clean the car that well as the previous drivers left some marks on the passenger seat but otherwise everything else was amazing.</p>
+      </div>
+
+
+      <div class="box">
+        <div class="rev-img">
+          <img src="img/rev3.jpg" alt="">
+        </div>
+        <h2>Sarah Van Rensburg</h2>
+        <div class="stars">
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star-half' ></i>
+        </div>
+        <p>The service at NHN Car Rental was phenomenal, I would highly recommend them any day to anyone flying in or just wanting to rent a car for a function.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!---NEWSLETTER-->
+
+  <section class="newsletter">
+    <!--<h2>Subscribe to our Newsletter</h2>-->
+    <!--<div class="box">
+     <input type="text" placeholder="Enter Your Email....">
+      <a href="#" class="btn">Subscribe</a>-->
+    </div>
+  </section>
+  <div class="copyright">
+    <p>&#169; NHN CAR RENTALS ALL RIGHTS RESERVED</p>
+    <div class="social">
+      <a href="https://www.facebook.com/"><i class='bx bxl-facebook' ></i></a>
+      <a href="https://twitter.com/?lang=en"><i class='bx bxl-twitter' ></i></a>
+      <a href="https://www.instagram.com/"><i class='bx bxl-instagram' ></i></a>
+    </div>
+  </div>
+
+
+  <!---Scroll Reveal-->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+
+  <script>
+
+    console.log(JSON.parse(window.localStorage.getItem('loginobject')));
+    const loginobject = JSON.parse(window.localStorage.getItem('loginobject'));
+
+    var clientpassword = loginobject.passkey;
+    var signin = document.getElementById('signin')
+    const username = document.getElementById('usernamelocation')
+    var currentDate = new Date();  // Get the current date
+//this if loop is to make the sign button disappear be replaced by user name 
+    if(clientpassword){
+        signin.style.display='none';
+        username.style.display='block';
+        username.innerHTML = loginobject.user;
+
+    }
+
+    let menu = document.querySelector('#menu-icon');
+    let navbar = document.querySelector('.navbar');
+
+    //nadeem
+menu.onclick = () => {
+    menu.classList.toggle('bx-x');
+    navbar.classList.toggle('active');
+}
+
+window.onscroll = () => {
+    menu.classList.remove('bx-x');
+    navbar.classList.remove('active');
+}
+
+const sr = ScrollReveal ({
+    distance: '60px',
+    duration: 2500,
+    delay: 400,
+    reset: true
+})
+
+sr.reveal('.text', {delay: 100, origin: 'top'})
+sr.reveal('.form-container form', {delay: 100, origin: 'left'})
+sr.reveal('.heading', {delay: 100, origin: 'top'})
+sr.reveal('.ride-container .box', {delay: 100, origin: 'top'})
+sr.reveal('.services-container .box', {delay: 100, origin: 'top'})
+sr.reveal('.about-container .box', {delay: 100, origin: 'top'})
+sr.reveal('.reviews-container', {delay: 100, origin: 'top'})
+sr.reveal('.newsletter .box', {delay: 100, origin: 'bottom'})
+
+//nashwin
+//renting cars
+
+let carName = '';; // Define everything in a broader scope
+let price = '';   
+let imageSrc='';
+let loc = '';
+let pickup = '';
+let returndate ='';
+let timedif = ''
+
+
+function rentCar(button) {
+    const box = button.closest('.box'); // Find the closest parent element with class "box"
+
+    const year = box.querySelector('p').textContent;
+
+    carName = box.querySelector('h3').textContent; // Assign values to carName and price
+
+    price = box.querySelector('h2').textContent;
+
+    imageSrc = box.querySelector('.box-img img').getAttribute('src'); // Get the image source
+
+    // Display car information in the "car-info" div   
+    
+    loc = document.getElementById('loc').value;
+
+    pickup = document.getElementById('Pick-Up-data').value;
+    
+    returndate = document.getElementById('Return-date').value;
+
+    let carInfoDiv = document.getElementById('car-info');
+
+
+
+    let pickupcal = new Date(pickup)
+    let returndatecal = new Date(returndate)
+    let timedif = returndatecal - pickupcal;
+
+    //details validation
+
+if(!loc || !pickup || !returndate){
+  alert('You have not fulled in all your details,please complete details and then reselect car')
+
+}else if( timedif < 0 || timedif === null){
+    alert('you cant go back in time...our time travel facillities are out of order')
+}else if(pickupcal < currentDate){
+    alert('pick up date cant be in the past')
+}
+else{
+
+    carInfoDiv.innerHTML = `<p>Car: ${carName}</p><p>Price: ${price}</p><p>Pick-up Date: ${pickup}</p><p>Return Date: ${returndate}</p><p>location: ${loc}</p>`;
+}
+
+ 
+    
+    console.log("Year: " + year);
+    console.log("Car Name: " + carName);
+    console.log("Price: " + price);
+}
+
+//correct date validation
+
+const form = document.forms[0]; // Access the form using its ID
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var clientpassword = loginobject.passkey;
+
+    loc = document.getElementById('loc').value;
+
+    pickup = document.getElementById('Pick-Up-data').value;
+
+    returndate = document.getElementById('Return-date').value;
+
+    const carInfoDiv = document.getElementById('car-info');
+
+    let pickupcal = new Date(pickup)
+    let returndatecal = new Date(returndate)
+    let timedif = returndatecal - pickupcal;
+
+
+    if ( timedif < 0 || timedif === null) {
+       alert('you cant go back in time') 
+    }
+    else if(!loc || !pickup || !returndate){
+        alert('You have not fulled in all your details,please complete details and then reselect car')
+    }
+    else if (!carName ) {
+
+        alert('Please select a car before submitting.');
+
+        loc = document.getElementById('loc').value;
+
+        pickup = document.getElementById('Pick-Up-data').value;
+
+        returndate = document.getElementById('Return-date').value;
+
+        const carInfoDiv = document.getElementById('car-info');
+
+        carInfoDiv.innerHTML = `<p>Car: ${carName}</p><p>Price: ${price}</p><p>Pick-up Date: ${pickup}</p><p>Return Date: ${returndate}</p><p>location: ${loc}</p>`;
+
+
+
+    }else
+    
+    if(!clientpassword){
+            alert('please signin first')
+    } 
+    else if(pickupcal < currentDate){
+    alert('pick up date cant be in the past');
+
+    const carInfoDiv = document.getElementById('car-info');
+
+    carInfoDiv.innerHTML = `<p>Car: ${carName}</p><p>Price: ${price}</p><p>Pick-up Date: ${pickup}</p><p>Return Date: ${returndate}</p><p>location: ${loc}</p>`;
+
+
+}
+    else {
+        window.localStorage.setItem('myObject', JSON.stringify({
+            car: carName,
+            payment: price,
+            place: loc,
+            pick: pickup,
+            re: returndate,
+            pic: imageSrc,
+            difoftime:timedif
+        }));
+        window.location.href = 'next.htm';
+    }
+});
+
+  </script>
+  
+
+
+</body>
+</html>

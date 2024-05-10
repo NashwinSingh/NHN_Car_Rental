@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Page</title>
+    <style>
+        h1{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            text-decoration: underline;
+        }
+        h2{
+            font-family: serif;
+            text-align: center;
+            text-decoration: overline;
+            color: black;
+            text-shadow: 2px 2px 4px rgb(121, 120, 120);
+        }
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+            margin-top: 100px;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        @media screen and (max-width: 600px) {
+            table {
+                width: 90%;
+            }
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div id="convert">
+        <h1>NHN CAR RENTALS</h1>
+        <h2>"On the Road to Memories"</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <td>CLIENT NAME</td>
+                    <td><p id="7"></p></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TYPE OF CAR</td>
+                    <td><p id="1"></p></td>
+                </tr>
+                <tr>
+                    <td>Amount Of Days Renting</td>
+                    <td><p id="10"></p></td>
+                </tr>
+                <tr>
+                    <td>Total Payment</td>
+                    <td><p id="2"></p></td>
+                </tr>
+                <tr>
+                    <td>PICK UP DATE</td>
+                    <td><p id="4"></p></td>
+                </tr>
+                <tr>
+                    <td>RETURN DATE</td>
+                    <td><p id="5"></p></td>
+                </tr>
+                <tr>
+                    <td>LOCATION</td>
+                    <td><p id="6"></p></td>
+                </tr>
+
+             </tbody>
+        </table>
+    </div>
+<div style="display: flex;justify-content: space-evenly;">
+    <button onclick="generatePDF()" style="border: 1px solid black;background-color: #ddd;">Generate PDF</button>
+</div>
+    <script>
+        const myObject = JSON.parse(localStorage.getItem('myObject'));
+        const newObject = JSON.parse(localStorage.getItem('newObject'));
+        const cardObject = JSON.parse(localStorage.getItem('cardObject'));
+
+        console.log(JSON.parse(localStorage.getItem('myObject')));
+        console.log(JSON.parse(localStorage.getItem('newObject')));
+        console.log(JSON.parse(localStorage.getItem('cardObject')))
+
+        var carType = document.getElementById('1');
+        var priceOfCar = document.getElementById('2');
+        var pickDate = document.getElementById('4');
+        var collection = document.getElementById('5');
+        var placeOfCar = document.getElementById('6');
+        var naam = document.getElementById('7');
+        var daysfordays = document.getElementById('10');
+
+        carType.innerHTML = myObject.car;
+        priceOfCar.innerHTML = 'R'+ newObject.totalcar;
+        pickDate.innerHTML = myObject.pick;
+        collection.innerHTML = myObject.re;
+        placeOfCar.innerHTML = myObject.place;
+        naam.innerHTML = newObject.names;
+        daysfordays.innerHTML = newObject.daysrenting;
+
+        // Generate PDF
+        function generatePDF() {
+            var element = document.getElementById('convert');
+            html2pdf().from(element).save();
+        }
+    </script>
+</body>
+</html>

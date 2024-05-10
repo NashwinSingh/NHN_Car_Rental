@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tessssst</title>
+    <link rel="stylesheet" href="stylenext.css">
+
+
+</head>
+<body>
+<div id="con">
+    <div class="payment-container">
+        <h1>Payment Information</h1>
+
+        <!-- Car and Price Information -->
+        <div class="car-info">
+            <div id="car-display">
+                 
+                <img id="car-image" src="" alt="Car Image">
+            </div>
+            <h2 id="car"></h2>
+            <h5 id="showtotalrent"></h5>
+            <p id="price"></p>
+        </div>
+
+<!--to be replaced by nadeems code-->
+
+
+<form id="payment-form">
+<div class="payment-form">
+        <label for="naam" >Full Name</label>
+        <input type="text" id="naam" pattern="[A-Za-z ]*" required >
+
+        <label for="IDnumber">ID-Number</label>
+        <input type="text" name="ID-Number" id="ID-Number" placeholder="000000 0000 000" required>
+          
+        <label for="billing-address">Billing Address</label>
+        <input type="text" id="billing-address" name="billing-address" minlength="3" placeholder="e.g. 123 Main St, City, Country" title=" it should be formatted in 123 Main St, City, Country " required>
+        
+        <label for="email">Email-Adress</label>
+        <input type="text" name="email" id="email" placeholder="name@gmail.com" required>
+
+        <label for="cellnumber">Cell Number</label>
+        <input type="text" name="cellnumber" id="cellnumber" maxlength="10" placeholder="000 000 0000" required>        
+          
+        <button class="pay-button" type="button" id="pop">Pay Now</button>
+        <button style="display: none;" class="pay-button" id="bil" onclick="sendData()">Next Page</button>
+    </div>
+</form>
+
+
+<div id="congrats" >
+
+  <!-- <h2>YOUR CAR WILL BE READY FOR PICK-UP ON THE
+        <span id="pickup" ></span> AT <a href="" id="showlocmap"><span id="loc" title="click for location"></span></a> </h2>
+
+        <h5>RENTALS ENDS ON THE <span id="return"></span></h5>
+        <p>Enjoy Your <span id="daysofriding"></span> Days Of Riding</p>--> 
+
+                   
+</div>
+
+    </div>        
+
+</div>
+
+
+
+<script>
+
+
+
+    document.getElementById('payment-form').addEventListener('submit', function (event) {
+    event.preventDefault();}) // Prevent the default form submission
+
+        // JavaScript code to populate car and price information
+        console.log(JSON.parse(window.localStorage.getItem('myObject')));
+        const myObject = JSON.parse(window.localStorage.getItem('myObject'));
+
+        const car = document.getElementById('car');
+        const price = document.getElementById('price');
+        const carImage = document.getElementById('car-image');
+
+
+        car.innerText = 'Car: ' + myObject.car; // You can customize the label
+        price.innerText = 'Price:' + myObject.payment; // You can customize the label
+        carImage.src = myObject.pic;
+
+
+        //FORM VALIDATION
+
+
+
+    
+
+//congrats 
+var showtotal = document.getElementById('showtotalrent')
+var congratsTrigger = document.getElementById('pop');
+
+var bill = document.getElementById('bil');
+
+var congratsMg = document.getElementById('congrats');
+
+var pickup = document.getElementById('pickup');
+var placelocation = document.getElementById('loc')
+var returnDate = document.getElementById('return')
+var ridingdays = document.getElementById('daysofriding')
+
+var na = document.getElementById('naam');
+var email = document.getElementById('email');
+var billingAddress = document.getElementById('billing-address')
+var cellnumber = document.getElementById('cellnumber');
+var idNumber = document.getElementById('ID-Number')
+
+ //form validation and car rent total 
+
+    //car price
+const priceMatch = myObject.payment.match(/\| R([\d,]+)\/Day/)//used this to get daily price of car
+
+const dailypriceofcar = parseFloat(priceMatch[1]);
+const totaldayrenting = myObject.difoftime / (1000 * 3600 * 24)
+const totalrent = dailypriceofcar * totaldayrenting;
+showtotal.innerHTML='TOTAL = R '+ totalrent
+
+
+
+
+
+            //email
+function isValidEmail(email) {
+
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);// should do a pattern checks for a valid email format and return increases its scope
+
+    }
+
+    //input data(when congrats is triggered it gets the value of all the input fields)
+
+
+    function validateInput(){
+        //form validation  if loop
+        
+        if (na.value === '' || !/^[A-Za-z\s,.-]+$/.test(na.value)) {
+            alert('Please fill in your name');
+        }
+        else if (!email.value === '' || !isValidEmail(email.value)){
+
+            alert('Please fill in a valid email')
+        }else if(!billingAddress.value === '' || !/^\d{1,3}(?:\s[^\d\s]+)+$/.test(billingAddress.value) ){
+            alert('full in correct billing adress, required format :(road number)(steetname)(road/street/avenue/ect)(suburb)(city)!!no commas required')
+        }
+        else if(!idNumber.value === '' || !/^\d{13}(?:\s\d{13})?$/.test(idNumber.value)){
+            alert('full in correct id number,leave no spaces inbetween the numbers')
+        }
+        else if(!cellnumber.value === '' || !/^\d{10}(?:\s\d{10})?$/.test(cellnumber.value)){
+            alert('full in correct callnumber and leave no spaces inbetween the numbers.!!!we do not required area codes')
+        }
+        else 
+        {
+            congratsMg.style.display = 'block';
+            bill.style.display = 'block';
+            congratsTrigger.style.display = 'none';
+
+           /* pickup.innerHTML = myObject.pick;
+            placelocation.innerHTML = myObject.place;
+            returnDate.innerHTML = myObject.re;
+            ridingdays.innerHTML = myObject.difoftime/ (1000 * 3600 * 24);*/
+
+            na = document.getElementById('naam').value;
+
+            email.disabled = true;
+            idNumber.disabled = true;
+            cellnumber.disabled = true;
+
+
+}  
+    }
+
+    congratsTrigger.addEventListener('click', function () {
+        validateInput()
+
+});         
+
+//send to final page(hopefully)
+
+        function sendData(){
+
+
+
+    window.localStorage.setItem('newObject' ,JSON.stringify({ names:na ,totalcar:totalrent , daysrenting:totaldayrenting}))
+
+        window.location.href='carddisplay.html'
+}
+ 
+    
+
+
+    </script>
+
+</body>
+</html>
